@@ -1,0 +1,49 @@
+﻿@model OCMenu.Models.Cafeteria
+
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    @foreach (OCMenu.Models.Meal m in Model.meals)
+    {
+        <div>
+        @m.name
+        <ul>
+        @foreach (OCMenu.Models.Line l in m.lines)
+        {
+            <div>
+            <li>@l.lineName</li>
+            <ul>
+            @foreach (OCMenu.Models.Item i in l.items)
+            {
+                <div>
+                <li>@i.itemName</li>
+                <ul>
+                @foreach (KeyValuePair<string, string> prop in i.properties)
+                {
+                    <li>@prop.Key:
+                    @prop.Value</li>
+                }
+                </ul>
+                </div>
+            }
+            </ul>
+            </div>
+        }
+        </ul>
+        </div>
+    }
+</div>
+
+@*<div>
+<ul>
+@foreach (@OCMenu.Models.Line l in @Model.breakfast.lines)
+{
+<li>
+@l.lineName
+</li>
+}
+</ul>
+</div>
+<div><p>@Model.lunch.name</p></div>
+*@
